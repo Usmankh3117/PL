@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/popup.css" rel="stylesheet" />
+    <script src="/libs/jquery-3.6.0.min.js"></script>
+    <script src="js/popup.js"></script>
+</head>
+<body>
+    <div class="layout-header-logo">
+        <div class="head-name-idea text-a-r">
+            <a id="emailData" style="display:none"></a>
+            <a id="btnDownloadCSV" class="btn btn-primary">Download CSV</a>
+        </div>
+        <div class="head-name-idea">
+            <button id="btnScrapeEmails" class="btn btn-primary">Scrape Emails</button>
+            <label id="lblMessage" class="text-success">Email Scraped Completed.</label>
+        </div>
+    </div>
+    <div class="container-emails" id="divEmailList">
+        
+    </div>
+</body>
+</html>

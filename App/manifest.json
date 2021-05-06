@@ -1,0 +1,25 @@
+{
+  "name": "PL",
+  "version": "1.0",
+  "description": "Scrape emails from webpages",
+
+  "icons": {
+    "128": "img/logo.png"
+  },
+  "content_scripts": [
+    {
+      "js": [ "/libs/jquery-3.6.0.min.js", "/js/Main.js" ],
+      "matches": [ "<all_urls>" ]
+    }
+  ],
+  "browser_action": {
+    "default_icon": "img/logo.png",
+    "default_title": "PL",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "storage",
+    "tabs"
+  ],
+  "manifest_version": 2
+}

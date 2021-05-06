@@ -1,0 +1,36 @@
+﻿body {
+    width: 480px;
+    min-height: 350px;
+}
+
+.head-name-idea {
+    width: 50%;
+    float: right;
+    padding: 10px;
+}
+
+    .head-name-idea button {
+        padding: 8px !important;
+    }
+
+.text-a-r {
+    text-align: right;
+}
+
+.text-a-l {
+    text-align: left;
+}
+
+.container-emails {
+    padding: 7px 15px;
+    max-height: 220px;
+    overflow-y: auto;
+    border: 1px solid;
+    margin: 5px 10px;
+}
+
+    .container-emails p {
+        font-size: 15px;
+        margin-bottom: 5px;
+        font-weight: 500;
+    }
