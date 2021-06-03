@@ -1,25 +1,32 @@
 {
-  "name": "PL",
-  "version": "1.0",
-  "description": "Scrape emails from webpages",
+  "name": "LemonIn",
+  "version": "2.5",
+  "description": "Scrape user data from Linkedin",
 
   "icons": {
-    "128": "img/logo.png"
+    "128": "img/logo_new.png"
+  },
+  "background": {
+    "persistent": false,
+    "scripts": [ "/js/background.js" ]
   },
   "content_scripts": [
     {
       "js": [ "/libs/jquery-3.6.0.min.js", "/js/Main.js" ],
-      "matches": [ "<all_urls>" ]
+      "matches": [ "https://www.linkedin.com/*" ],
+      "css": [ "/css/style.css" ],
+      "run_at": "document_end"
     }
   ],
   "browser_action": {
-    "default_icon": "img/logo.png",
-    "default_title": "PL",
-    "default_popup": "popup.html"
+    "default_icon": "img/logo_icon.png",
+    "default_title": "LemonIn",
+    "default_popup": "Login.html"
   },
   "permissions": [
     "storage",
-    "tabs"
+    "https://www.linkedin.com/*",
+    "https://lemoin.massmailcampaign.com/"
   ],
   "manifest_version": 2
 }

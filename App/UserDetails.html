@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>LemonIn</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/CommonStyle.css" rel="stylesheet" />
+    <link href="css/all.min.css" rel="stylesheet" />
+    <link href="css/UserDetails.css" rel="stylesheet" />
+
+    <script src="/libs/jquery-3.6.0.min.js"></script>
+    <script src="js/UserDetails.js"></script>
+</head>
+<body>
+    <style>
+        .badge-font-size {
+            font-size: 16px;
+        }
+    </style>
+    <div class="container-fluid">
+        <div class="row mt-3">
+            <div class="col-6">
+                <img src="img/logo_new.png" class="main-logo" />
+                <!--<label class="main-heading">Scraping Tool</label>-->
+            </div>
+            <!--<div class="col-1" style="line-height:35px;">
+                <img src="img/plus.png" />
+            </div>-->
+            <div class="col-6 text-right">
+                <i class="fa fa-power-off pt-3 mr-3 logout-icon" aria-hidden="true" style="color: #bb0202 !important;" title="Logout" id="btnLogout"></i>
+                <label id="lblUserName" class="mr-2"></label>
+                <!--<img src="img/search.png" class="mr-3" />-->
+                <!--<img src="img/Img.png" />-->
+            </div>
+        </div>
+        <hr class="solid">
+        <div id="divUserData">
+            <label id="lblCopyMessage" class="text-success mb-1">Copied!</label>
+            <div class="row">
+                <div class="col-1 text-left pr-0">
+                    <i class="fas fa-chevron-left user-icons" id="btnBackToList"></i>
+                </div>
+                <div class="col-2 pl-0">
+                    <img class="user-profile" id="imgUserProfile" />
+                </div>
+                <div class="col-7">
+                    <p class="mb-1 user-name" id="lblScrapeUserName"></p>
+                    <p class="mb-0 user-company-info" id="lblUserDesignation"></p>
+                    <p class="mb-0 user-company-info" id="lblUserCompnay"></p>
+                </div>
+                <div class="col-2 text-right pr-3">
+                    <i class="far fa-copy mr-3 user-icons copytoclipboard" id="btnCopytoClipBoard"></i>
+                    <i class="far fa-trash-alt user-icons" style="color: red;font-size: 18px;" id="btnDeleteUser"></i>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-1"></div>
+                <div class="col-3 pl-0">
+                    <label class="details-title">Email</label>
+                </div>
+                <div class="col-8">
+                    <p class="mb-0 details-info" id="lblUserEmail"></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-1"></div>
+                <div class="col-3 pl-0">
+                    <label class="details-title">Phone</label>
+                </div>
+                <div class="col-8">
+                    <p class="mb-0 details-info" id="lblUserNumber"></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-1"></div>
+                <div class="col-3 pl-0">
+                    <label class="details-title">Address</label>
+                </div>
+                <div class="col-8">
+                    <p class="mb-0 details-info" id="lblUserAddress"></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-1"></div>
+                <div class="col-3 pl-0">
+                    <label class="details-title">Experience</label>
+                </div>
+                <div class="col-8">
+                    <p class="mb-0 details-info" id="lblExperience"></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-1"></div>
+                <div class="col-3 pl-0">
+                    <label class="details-title">Skills</label>
+                </div>
+                <div class="col-8" id="divSkilss">
+                </div>
+            </div>
+            <!--<div class="row mr-2">
+                <div class="col-12 text-right mb-1 mr-2">
+                    <i class="far fa-trash-alt user-icons" style="color: red;font-size: 18px;" id="btnDeleteUser"></i>
+                </div>
+            </div>-->
+        </div>
+    </div>
+</body>
+</html>

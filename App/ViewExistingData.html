@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/CommonStyle.css" rel="stylesheet" />
+    <link href="css/all.min.css" rel="stylesheet" />
+    <link href="css/ViewExistingData.css" rel="stylesheet" />
+
+    <script src="/libs/jquery-3.6.0.min.js"></script>
+    <script src="/libs/bootstrap.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/ViewExistingData.js"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row mt-3">
+            <div class="col-6">
+                <img src="img/logo_new.png" class="main-logo" />
+                <!--<label class="main-heading">Scraping Tool</label>-->
+            </div>
+            <!--<div class="col-1" style="line-height:35px;">
+                <img src="img/plus.png" />
+            </div>-->
+            <div class="col-6 text-right">
+                <i class="fa fa-power-off pt-3 mr-3 logout-icon" aria-hidden="true" style="color: #bb0202 !important;" title="Logout" id="btnLogout"></i>
+                <label id="lblUserName" class="mr-2"></label>
+                <!--<img src="img/search.png" class="mr-3" />-->
+                <!--<img src="img/Img.png" />-->
+            </div>
+        </div>
+        <hr class="solid mt-2 mb-3">
+        <label id="lblCopyMessage" class="text-success">Copied!</label>
+        <div class="row mb-2">
+            <div class="col-1 text-lef">
+                <i class="fas fa-chevron-left user-icons" id="btnBackToList"></i>
+            </div>
+            <div class="col-5 pl-0">
+                <h4 id="lblPageHead" class="page-head"></h4>
+            </div>
+            <div class="col-6 text-right" id="divDefaultDownload">
+                <a id="btnLinkedinDownloadCSV" href="" class="btn-custom-main btn-downloadcsv">Download CSV</a>
+            </div>
+            <div class="col-6 mb-1" id="divShareDetails">
+                <div class="row">
+                    <div class="col-7 pr-0">
+                        <input type="hidden" id="hdnFolderType" />
+                        <input type="hidden" id="hdnFolderValue" />
+                        <input type="text" id="txtShareEmail" class="form-control custom-input" placeholder="Email Address">
+                        <label class="text mb-0" id="lblShareEmail"></label>
+                    </div>
+                    <div class="col-5">
+                        <button type="submit" id="btnShareFolder" class="btn btn-primary custom-button">Share Folder</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="divUserData">
+
+        </div>
+        <div class="row mt-2 mb-2">
+            <div class="col-1">
+            </div>
+            <div class="col-3">
+                <button id="btnRemoveAll" class="btn-custom-main btn-removeAll">Delete All</button>
+            </div>
+            <div class="col-4">
+                <div id="divFolderDownload">
+                    <a id="btnLinkedinDownloadCSV" href="" class="btn-custom-main btn-downloadcsv">Download CSV</a>
+                </div>
+            </div>
+            <div class="col-4 col-4 text-right" style="line-height:3">
+                <i class="fas fa-angle-left mr-4 icon-angle" id="btnPreviuos"></i>
+                Page <label id="lblCurrentPage"></label> of <label id="lblTotalPage"></label>
+                <i class="fas fa-angle-right icon-angle ml-4" id="btnNext"></i>
+            </div>
+            <!--<div class="col-2" style="line-height:3">
+
+            </div>-->
+        </div>
+        <!--<div class="row mb-4">
+            <div class="col-1">
+                <img src="img/Img.png" />
+            </div>
+            <div class="col-7">
+                <p class="mb-0 user-name">Johna Dee</p>
+                <label class="user-company-info">Designer | Pearl Lemon</label>
+            </div>
+            <div class="col-4 text-right">
+                <i class="far fa-map mr-3" title="Tooltip on top"></i>
+                <i class="far fa-envelope mr-3"></i>
+                <i class="fas fa-phone-alt mr-3"></i>
+                <i class="far fa-copy mr-3"></i>
+            </div>
+        </div>-->
+    </div>
+    <div id="lemoin-overlay" style="display:none;">
+        <div class="lemoin-spinner"></div>
+        <br />
+        Loading...
+    </div>
+</body>
+</html>

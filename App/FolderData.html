@@ -4,13 +4,15 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
-    <link href="css/all.min.css" rel="stylesheet" />
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/CommonStyle.css" rel="stylesheet" />
-    <link href="css/popup.css" rel="stylesheet" />
+    <link href="css/all.min.css" rel="stylesheet" />
+    <link href="css/FolderData.css" rel="stylesheet" />
 
     <script src="/libs/jquery-3.6.0.min.js"></script>
-    <script src="js/popup.js"></script>
+    <script src="/libs/bootstrap.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/FolderData.js"></script>
 </head>
 <body>
     <div class="container-fluid">
@@ -29,30 +31,29 @@
                 <!--<img src="img/Img.png" />-->
             </div>
         </div>
-        <div class="row mt-5 text-center">
-            <!--<div class="col-12 mt-5">
-                <button id="btnScrapeEmails" class="btn-custom-main">Scrape Emails</button>
-            </div>-->
-            <div class="col-12 mt-5">
-                <button id="btnViewExistingData" class="btn-custom-main">View Existing Data</button><br />
-                <button id="btnFoldersData" class="btn-custom-main mt-2">Folders</button><br />
-                <button id="btnSharedWithYou" class="btn-custom-main mt-2">Shared's With You</button>
+        <hr class="solid mt-2 mb-3">
+        <div id="divUserData">
+            <div class="row">
+                <div class="col-12 text-left mb-1">
+                    <i class="fas fa-arrow-left user-icons" id="btnBackToList"></i>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 mb-2">
+                    <h5>Designation's Folder</h5>
+                </div>
+            </div>
+            <div class="row" id="divDesignationData">
+            </div>
+            <div class="row mt-4">
+                <div class="col-12 mb-2">
+                    <h5>Skill's Folder</h5>
+                </div>
+            </div>
+            <div class="row" id="divSkillData">
             </div>
         </div>
     </div>
-    <!--<div class="layout-header-logo">
-        <div class="head-name-idea text-a-r csv-container">
-            <a id="btnDownloadCSV" class="btn btn-primary">Download CSV</a>
-            <a id="btnLinkedinDownloadCSV" class="btn btn-primary">Linkedin CSV</a>
-        </div>
-        <div class="head-name-idea email-scrape">
-            <button id="btnScrapeEmails" class="btn btn-primary">Scrape Emails</button>
-            <label id="lblMessage" class="text-success">Email Scraped Completed.</label>
-        </div>
-    </div>
-    <div class="container-emails" id="divEmailList">
-
-    </div>-->
     <div id="lemoin-overlay" style="display:none;">
         <div class="lemoin-spinner"></div>
         <br />

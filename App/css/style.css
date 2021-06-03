@@ -1,0 +1,24 @@
+.main-injected-div {
+    margin: 0px 10px !important;
+    position: fixed !important;
+    left: 0px !important;
+    top: 10px !important;
+    z-index: 10000 !important;
+}
+
+.btn_scrape_data {
+    border: 1px solid #0a66c2;
+    background-color: #0a66c2;
+    color: #fff;
+    height: 32px;
+    padding: 0px 10px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 15px;
+}
+
+.btn_scraped_data {
+    background-color: #a5a2a2 !important;
+    color: black !important;
+    border-color: #a5a2a2 !important;
+}

@@ -1,0 +1,24 @@
+﻿.folder-main {
+    display: table;
+}
+
+.folder {
+    display: table-cell;
+    vertical-align: middle;
+    height: 80px;
+    text-align: center;
+    padding: 10px 5px;
+    background-color: #000;
+    color: #fff;
+    border-radius: 20px;
+}
+
+    .folder a {
+        font-size: 16px;
+        text-decoration: none;
+        color: #fff;
+    }
+
+    .folder label:hover {
+        cursor: pointer;
+    }

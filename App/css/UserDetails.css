@@ -1,0 +1,53 @@
+﻿.user-profile {
+    width: 100px;
+    border-radius: 15px;
+}
+
+.user-name {
+    font-size: 20px;
+    color: #1A1A1A;
+    font-weight: 700;
+}
+
+.user-company-info {
+    font-size: 14px;
+    color: #777A7D;
+    font-weight: 400;
+}
+
+.details-title {
+    font-size: 16px;
+    color: #777A7D;
+    font-weight: 400;
+}
+
+.details-info {
+    font-size: 16px;
+    color: #1A1A1A;
+    font-weight: 400;
+}
+
+.btn-back {
+    width: auto !important;
+    height: auto !important;
+    font-size: 14px !important;
+}
+
+.btn-delete {
+    width: auto !important;
+    height: auto !important;
+    font-size: 14px !important;
+    background-color: red;
+    border-color: red !important;
+}
+
+.user-icons:hover {
+    cursor: pointer;
+}
+
+.custom-badge {
+    background-color: #FFCC00;
+    color: #000;
+    height: 29px;
+    font-weight: 500;
+}

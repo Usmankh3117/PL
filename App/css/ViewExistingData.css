@@ -1,0 +1,114 @@
+﻿.user-name {
+    font-weight: 700;
+    font-size: 14px;
+    color: #1A1A1A;
+}
+
+    .user-name a {
+        color: #1A1A1A;
+    }
+
+.user-company-info {
+    font-weight: 400;
+    font-size: 14px;
+    color: #777A7D;
+}
+
+.user-profile-img {
+    width: 40px;
+    border-radius: 10px;
+}
+
+.user-data-list i:hover {
+    cursor: pointer;
+}
+
+.btn-downloadcsv {
+    width: 200px;
+    line-height: 3;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn-removeAll {
+    width: 120px;
+    text-align: center;
+    border-style: none;
+}
+
+.btn-downloadcsv:hover {
+    text-decoration: none;
+    color: #fff;
+}
+
+.icon-angle:hover {
+    cursor: pointer;
+}
+
+#divUserData {
+    min-height: 375px;
+}
+
+.customtooltip {
+    outline: none;
+    text-decoration: none;
+    position: relative;
+}
+
+    .customtooltip span {
+        margin-left: -999em;
+        position: absolute;
+    }
+
+    .customtooltip:hover span {
+        border-radius: 5px 5px;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+        -webkit-box-shadow: 5px 5px rgba(0, 0, 0, 0.1);
+        -moz-box-shadow: 5px 5px rgba(0, 0, 0, 0.1);
+        font-family: Calibri, Tahoma, Geneva, sans-serif;
+        position: absolute;
+        left: -6em;
+        top: -40px;
+        z-index: 99;
+        margin-left: 0;
+        max-width: 200px;
+        min-width: 200px;
+    }
+
+.classic, .classicphone {
+    background: #000;
+    color: #fff;
+    padding: 6px;
+    text-align: center;
+}
+
+.customtooltip:hover span.classicphone {
+    max-width: 150px;
+    min-width: 150px;
+}
+
+.page-head {
+    font-size: 20px;
+    color: #1A1A1A;
+    font-weight: 700;
+}
+
+.custom-input {
+    height: 35px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 40px;
+    padding: 0px 20px;
+}
+
+.custom-button {
+    background: #1A1A1A !important;
+    border-color: #1A1A1A !important;
+    height: 35px;
+    font-size: 14px;
+    color: #FFFFFF !important;
+    font-weight: 300 !important;
+    border-radius: 50px;
+}

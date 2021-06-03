@@ -1,10 +1,16 @@
-﻿body {
-    width: 480px;
-    min-height: 350px;
+﻿.layout-header-logo {
+    width: 100%;
+}
+
+.email-scrape {
+    width: 40%;
+}
+
+.csv-container {
+    width: 60%;
 }
 
 .head-name-idea {
-    width: 50%;
     float: right;
     padding: 10px;
 }

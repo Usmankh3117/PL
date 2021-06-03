@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Login</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/Login.css" rel="stylesheet" />
+    <link href="css/all.min.css" rel="stylesheet" />
+
+    <script src="libs/jquery-3.6.0.min.js"></script>
+    <script src="libs/bootstrap.min.js"></script>
+    <script src="js/Login.js"></script>
+
+</head>
+<body>
+
+    <div class="container-fluid">
+        <div class="row mt-2 text-center">
+            <div class="col-md-12">
+                <img src="img/logo_new.png" class="main-logo" />
+            </div>
+        </div>
+        <div class="row mt-2 text-center">
+            <div class="col-md-12">
+                <p class="login-head">Please login to your account.</p>
+            </div>
+        </div>
+        <div class="row" id="divErrorMessage">
+            <div class="col-1">
+            </div>
+            <div class="col-10 alert pt-1 pb-1 mb-0">
+                <label id="lblMessage" class="m-0" style="font-size:14px;"></label>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-1">
+            </div>
+            <div class="form-group col-10 mb-2">
+                <label class="sr-only" for="txtUserEmail">Email</label>
+                <input type="text" class="form-control custom-input" id="txtUserEmail" placeholder="Email Address">
+                <label class="mb-0 text-danger" id="lblEmailError"></label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1">
+            </div>
+            <div class="form-group col-10 mb-2">
+                <label class="sr-only" for="txtUserPassword">Password</label>
+                <input type="password" class="form-control custom-input" id="txtUserPassword" placeholder="Password">
+                <label class="mb-0 text-danger" id="lblPasswordError"></label>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-1">
+            </div>
+            <div class="col-10">
+                <input type="button" id="btnSubmitLogin" value="LOGIN" class="btn btn-primary col-12 custom-button" />
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-12 text-right text-links">
+                <a href="ForgotPassword.html">Forgot Password?</a>
+            </div>
+        </div>
+        <div class="row mt-4 mb-3">
+            <div class="col-12 text-center text-links" style="font-size: 12px;">
+                Don’t have an account? <a href="Register.html" class="newaccount">Create new now!</a>
+            </div>
+            <div class="col-12 text-center text-links mt-3" style="font-size: 12px;">
+                By signing up, you are agree with our Terms & Conditions
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
