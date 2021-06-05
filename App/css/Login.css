@@ -34,9 +34,16 @@
     border-color: #1A1A1A !important;
     height: 50px;
     font-size: 16px;
-    color: #FFFFFF !important;
     font-weight: 300 !important;
     border-radius: 50px;
+}
+
+.social-login-btns {
+    color: #FFFFFF !important;
+    height: 50px;
+    border-radius: 50px;
+    font-size: 16px;
+
 }
 
     .custom-button.focus, .custom-button:focus {
@@ -56,3 +63,25 @@
     color: #1A1A1A;
     border-radius: 45px;
 }
+
+
+.custom-loader {
+    border: 6px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 6px solid black;
+    width: 20px;
+    height: 20px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+  }
+  
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
