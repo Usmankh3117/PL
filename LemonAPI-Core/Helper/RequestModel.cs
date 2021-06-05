@@ -40,4 +40,26 @@ namespace LemonAPI_Core.Helper
         public string FolderType { get; set; }
         public string FolderValue { get; set; }
     }
+
+    public class DelteFolderbySkillDesignation
+    {
+        public string UserId { get; set; }
+        public List<string> Designations { get; set; }
+        public List<int> Skills { get; set; }
+    }
+
+    public class ShareFoldersbySkillDesignation
+    {
+        public string UserId { get; set; }
+        public string Email { get; set; }
+        public List<string> Designations { get; set; }
+        public List<int> Skills { get; set; }
+    }
+
+    public class DelteFolderbyType
+    {
+        public string UserId { get; set; }
+        public string FolderType { get; set; }
+        public string FolderValue { get; set; }
+    }
 }

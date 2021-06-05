@@ -1,5 +1,4 @@
-﻿//const app_api_endpoint = "https://localhost:44392/api/";
-const app_api_endpoint = "https://lemoin.massmailcampaign.com/api/";
+﻿const app_api_endpoint = GetAPIEndpoint();
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -18,7 +17,12 @@ document.addEventListener("DOMContentLoaded", function () {
     $("#btnLogout").click(fn_UserLogout);
     $("#btnCopytoClipBoard").click(fn_CopyToClipBoard);
     $("#btnBackToList").click(function () {
-        location.href = "/ViewExistingData.html";
+
+        var backType = getUrlVars()["back"];
+        if (backType == undefined || backType == null)
+            location.href = "/ViewExistingData.html";
+        else
+            location.href = "/Sharedwithyou.html";
     });
 
     $("#btnDeleteUser").click(function () {

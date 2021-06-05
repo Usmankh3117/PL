@@ -4,13 +4,14 @@
 
 .folder {
     display: table-cell;
-    vertical-align: middle;
-    height: 80px;
     text-align: center;
-    padding: 10px 5px;
+    padding: 10px;
     background-color: #000;
     color: #fff;
     border-radius: 20px;
+    min-width: 60px;
+    margin-right: 10px;
+    margin-bottom: 5px;
 }
 
     .folder a {
@@ -22,3 +23,64 @@
     .folder label:hover {
         cursor: pointer;
     }
+
+.page-head {
+    font-size: 20px;
+    color: #1A1A1A;
+    font-weight: 700;
+}
+
+.desi-skill-data {
+    margin-left: 60px;
+}
+
+.btn-removeAll {
+    width: 120px;
+    text-align: center;
+    border-style: none;
+}
+
+
+.button-group-pills .btn {
+    border-radius: 20px;
+    line-height: 1.2;
+    margin-right: 10px;
+    background-color: rgba(26, 26, 26, 0.2);
+    color: #FFFFFF;
+}
+
+.button-group-pills .active {
+    border-color: #000;
+    background-color: #000;
+    color: #FFF;
+    box-shadow: none;
+}
+
+.desi-skill-chk{
+    display:none;
+}
+
+.custom-button {
+    background: #1A1A1A !important;
+    border-color: #1A1A1A !important;
+    height: 35px;
+    font-size: 14px;
+    color: #FFFFFF !important;
+    font-weight: 300 !important;
+    border-radius: 50px;
+}
+
+.custom-input {
+    height: 35px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 40px;
+    padding: 0px 20px;
+}
+
+#divUserData {
+    min-height: 375px;
+}
+
+.delete-download-btn {
+    height: 43px !important;
+}

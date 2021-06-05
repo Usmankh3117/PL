@@ -1,5 +1,4 @@
-﻿//const app_api_endpoint = "https://localhost:44392/api/";
-const app_api_endpoint = "https://lemoin.massmailcampaign.com/api/";
+﻿const app_api_endpoint = GetAPIEndpoint();
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -10,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
     $("#btnSubmitRegister").click(fn_UserRegister);
     $("#register-with-facebook").click(facebookRegister);
     $("#register-with-google").click(goolgeRegister);
-    $("#register-with-twitter").click(goolgeRegister);
+    $("#register-with-twitter").click(twitterRegister);
     $("#txtFullName").change(fn_FullNameChange);
     $("#txtEmail").change(fn_EmailChange);
     $("#txtPassword").change(fn_PasswordChange);

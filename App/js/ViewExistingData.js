@@ -1,5 +1,5 @@
-﻿//const app_api_endpoint = "https://localhost:44392/api/";
-const app_api_endpoint = "https://lemoin.massmailcampaign.com/api/";
+﻿const app_api_endpoint = GetAPIEndpoint();
+
 var LoogedIn_UserId = "";
 var PageNumber = 1;
 var PageSize = 5;
@@ -11,6 +11,7 @@ $(document).ready(function () {
     $("#divShareDetails").hide();
     $("#lblShareEmail").hide();
     $("#btnRemoveAll").hide();
+    $(".pagination-content").hide();
 
     chrome.storage.local.get('LemonInUser', function (result) {
 
@@ -25,6 +26,7 @@ $(document).ready(function () {
                 LoogedIn_UserId = result.LemonInUser.Id;
                 var folderType = getUrlVars()["folderType"];
                 var folderValue = getUrlVars()["folderValue"];
+                var skillName = getUrlVars()["skillName"];
 
                 if (folderType == undefined || folderType == null) {
 
@@ -56,10 +58,10 @@ $(document).ready(function () {
                     $("#divShareDetails").show();
                     $("#hdnFolderType").val(folderType);
                     $("#hdnFolderValue").val(folderValue);
-                    $("#btnRemoveAll").hide();
+                    $("#btnRemoveAll").show();
                 }
                 else if (folderType == "skill") {
-                    $("#lblPageHead").text(folderValue);
+                    $("#lblPageHead").text(decodeURI(skillName));
                     $("#divDefaultDownload").hide();
                     $("#divFolderDownload").show();
 
@@ -67,7 +69,7 @@ $(document).ready(function () {
                     $("#divShareDetails").show();
                     $("#hdnFolderType").val(folderType);
                     $("#hdnFolderValue").val(folderValue);
-                    $("#btnRemoveAll").hide();
+                    $("#btnRemoveAll").show();
                 }
             }
         }
@@ -108,35 +110,76 @@ $(document).ready(function () {
 
         if (confirm('Are you sure you want to remove all?')) {
 
-            var LeadData = {
-                "UserId": LoogedIn_UserId
-            }
+            var folderType = getUrlVars()["folderType"];
+            var folderValue = getUrlVars()["folderValue"];
 
-            $.ajax({
-                type: "POST",
-                url: app_api_endpoint + "User/DeleteLeadByUser",
-                dataType: "json",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                data: JSON.stringify(LeadData),
-                beforeSend: function () {
-                    $('#lemoin-overlay').show();
-                },
-                success: function (data) {
-                    if (data != null && data != undefined) {
-                        if (data.status != undefined && data.status == true) {
-                            $("#divUserData").html('<p class="text-danger">No Data Found.</p>');
-                            $("#btnPreviuos,#btnNext").hide();
-                        }
-                    }
-                },
-                error: function (data) {
-                },
-                complete: function () {
-                    $('#lemoin-overlay').hide();
+            if (folderType == undefined || folderType == null) {
+
+                var LeadData = {
+                    "UserId": LoogedIn_UserId
                 }
-            });
+                $.ajax({
+                    type: "POST",
+                    url: app_api_endpoint + "User/DeleteLeadByUser",
+                    dataType: "json",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    data: JSON.stringify(LeadData),
+                    beforeSend: function () {
+                        $('#lemoin-overlay').show();
+                    },
+                    success: function (data) {
+                        if (data != null && data != undefined) {
+                            if (data.status != undefined && data.status == true) {
+                                $("#divUserData").html('<p class="text-danger">No Data Found.</p>');
+                                $("#btnPreviuos,#btnNext").hide();
+                            }
+                        }
+                    },
+                    error: function (data) {
+                    },
+                    complete: function () {
+                        $('#lemoin-overlay').hide();
+                    }
+                });
+            }
+            else {
+
+                var LeadData = {
+                    "UserId": LoogedIn_UserId,
+                    "FolderType": folderType,
+                    "FolderValue": folderValue,
+                }
+                $.ajax({
+                    type: "POST",
+                    url: app_api_endpoint + "Folder/DeleteFolderByType",
+                    dataType: "json",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    data: JSON.stringify(LeadData),
+                    beforeSend: function () {
+                        $('#lemoin-overlay').show();
+                    },
+                    success: function (data) {
+                        if (data != null && data != undefined) {
+                            if (data.status != undefined && data.status == true) {
+                                $("#divUserData").html('<p class="text-danger">No Data Found.</p>');
+                                $("#btnPreviuos,#btnNext").hide();
+                                $(".pagination-content").hide();
+                                $("#lblCurrentPage,#lblTotalPage").text('');
+                            }
+                        }
+                    },
+                    error: function (data) {
+                    },
+                    complete: function () {
+                        $('#lemoin-overlay').hide();
+                    }
+                });
+
+            }
         }
     });
 
@@ -490,8 +533,8 @@ function ShowDataBasedonPage(pageNumber, allUserData) {
 function ShowPrevNext(pageNumber, allUserData) {
 
     $("#btnPreviuos,#btnNext").show();
+    $(".pagination-content").show();
 
-    
     var totalPages = Math.ceil(allUserData.length / PageSize);
     if (totalPages == 1) {
         $("#btnPreviuos,#btnNext").hide();
@@ -507,6 +550,11 @@ function ShowPrevNext(pageNumber, allUserData) {
 
     $("#lblCurrentPage").text(pageNumber);
     $("#lblTotalPage").text(totalPages);
+
+    console.log(totalPages);
+    if (totalPages == 0) {
+        $(".pagination-content").hide();
+    }
 }
 
 
@@ -521,8 +569,8 @@ function GenerateCSVData(allLinkedinData) {
 
             csvData += singleUser["firstName"] + "," + singleUser["lastName"] + "," + singleUser["phoneNumber"] + "," + singleUser["email"] + "," + singleUser["address"] + "," + socialLinks + "\n";
         }
-        $("#btnLinkedinDownloadCSV").attr("download", "Linkedin Data.csv");
-        $("#btnLinkedinDownloadCSV").attr("href", "data:text/csv,First Name,Last Name,Phone Number,Email,Address,Social Links\n" + csvData);
+        $("#btnLinkedinDownloadCSVUp,#btnLinkedinDownloadCSVDown").attr("download", "Linkedin Data.csv");
+        $("#btnLinkedinDownloadCSVUp,#btnLinkedinDownloadCSVDown").attr("href", "data:text/csv,First Name,Last Name,Phone Number,Email,Address,Social Links\n" + csvData);
     }
 }
 
@@ -551,3 +599,41 @@ function fn_UserLogout() {
         window.location.href = '/Login.html';
     });
 }
+
+$(document).on("click", ".btnDeleteSingleUser", function () {
+    if (confirm('Are you sure you want to delete?')) {
+
+        var ContactId = $(this).attr('data-id');
+        if (ContactId != undefined && ContactId != "") {
+
+            var LeadData = {
+                "ContactId": parseInt(ContactId)
+            }
+
+            $.ajax({
+                type: "POST",
+                url: app_api_endpoint + "User/DeleteLeadById",
+                dataType: "json",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                data: JSON.stringify(LeadData),
+                beforeSend: function () {
+                    $('#lemoin-overlay').show();
+                },
+                success: function (data) {
+                    if (data != null && data != undefined) {
+                        if (data.status != undefined && data.status == true) {
+                            location.href = "/ViewExistingData.html";
+                        }
+                    }
+                },
+                error: function (data) {
+                },
+                complete: function () {
+                    $('#lemoin-overlay').hide();
+                }
+            });
+        }
+    }
+});
