@@ -1,8 +1,8 @@
-﻿//const app_api_endpoint = "https://localhost:44392/api/";
-const app_api_endpoint = "https://lemoin.massmailcampaign.com/api/";
+﻿const app_api_endpoint = GetAPIEndpoint();
 
 document.addEventListener("DOMContentLoaded", function () {
 
+    $("#UserloadingScreen").hide();
     chrome.storage.local.get('LemonInUser', function (result) {
         console.log(result);
         if (result != undefined && result.LemonInUser != undefined && result.LemonInUser.Id != undefined && result.LemonInUser.Id != null) {
@@ -62,9 +62,14 @@ function fn_UserLogin() {
                             Id: data.id,
                             Token: data.token
                         }
-
                         chrome.storage.local.set({ 'LemonInUser': user });
-                        window.location.href = '/Popup.html';
+
+                        $("#lblName").text(data.fullName);
+                        $("#loginscreen").hide();
+                        $("#UserloadingScreen").show();
+                        setTimeout(function () {
+                            window.location.href = '/Popup.html';
+                        }, 1000);
 
                     }
                     else {

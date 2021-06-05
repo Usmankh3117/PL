@@ -13,23 +13,28 @@
     <script src="/libs/bootstrap.min.js"></script>
     <script src="js/Master.js"></script>
     <script src="js/popper.min.js"></script>
-    <script src="js/ViewExistingData.js"></script>
+    <script src="js/SharedWithYou.js"></script>
 </head>
 <body>
+    <style>
+        [data-toggle="collapse"] .fa:before {
+            content: "\f078";
+            /*content: "\f077";*/
+        }
+
+        [data-toggle="collapse"].collapsed .fa:before {
+            content: "\f077";
+            /*content: "\f078";*/
+        }
+    </style>
     <div class="container-fluid">
         <div class="row mt-3">
             <div class="col-6">
                 <img src="img/logo_new.png" class="main-logo" />
-                <!--<label class="main-heading">Scraping Tool</label>-->
             </div>
-            <!--<div class="col-1" style="line-height:35px;">
-                <img src="img/plus.png" />
-            </div>-->
             <div class="col-6 text-right">
                 <i class="fa fa-power-off pt-3 mr-3 logout-icon" aria-hidden="true" style="color: #bb0202 !important;" title="Logout" id="btnLogout"></i>
                 <label id="lblUserName" class="mr-2"></label>
-                <!--<img src="img/search.png" class="mr-3" />-->
-                <!--<img src="img/Img.png" />-->
             </div>
         </div>
         <hr class="solid mt-2 mb-2">
@@ -39,10 +44,7 @@
                 <i class="fas fa-chevron-left user-icons" id="btnBackToList"></i>
             </div>
             <div class="col-5 pl-0">
-                <h4 id="lblPageHead" class="page-head"></h4>
-            </div>
-            <div class="col-6 text-right" id="divDefaultDownload">
-                <a id="btnLinkedinDownloadCSVUp" href="" class="btn-custom-main btn-downloadcsv delete-download-btn download-up">Download CSV</a>
+                <h4 class="page-head">Shared With You</h4>
             </div>
             <div class="col-6 mb-1" id="divShareDetails">
                 <div class="row">
@@ -59,43 +61,18 @@
             </div>
         </div>
         <div id="divUserData">
-
+            <div id="accordinDesingation">
+            </div>
+            <div id="accordinSkill">
+            </div>
         </div>
-        <div class="row mt-2 mb-2">
+        <div class="row mt-5 mb-2">
             <div class="col-1">
             </div>
-            <div class="col-3">
+            <div class="col-3 pl-0">
                 <button id="btnRemoveAll" class="btn-custom-main btn-removeAll delete-download-btn">Delete All</button>
             </div>
-            <div class="col-4">
-                <div id="divFolderDownload">
-                    <a id="btnLinkedinDownloadCSVDown" href="" class="btn-custom-main btn-downloadcsv  delete-download-btn">Download CSV</a>
-                </div>
-            </div>
-            <div class="col-4 col-4 text-right" style="line-height:3">
-                <i class="fas fa-angle-left mr-4 icon-angle" id="btnPreviuos"></i>
-                <label class="pagination-content">Page</label> <label id="lblCurrentPage"></label><label class="pagination-content"> of</label> <label id="lblTotalPage"></label>
-                <i class="fas fa-angle-right icon-angle ml-4" id="btnNext"></i>
-            </div>
-            <!--<div class="col-2" style="line-height:3">
-
-            </div>-->
         </div>
-        <!--<div class="row mb-4">
-            <div class="col-1">
-                <img src="img/Img.png" />
-            </div>
-            <div class="col-7">
-                <p class="mb-0 user-name">Johna Dee</p>
-                <label class="user-company-info">Designer | Pearl Lemon</label>
-            </div>
-            <div class="col-4 text-right">
-                <i class="far fa-map mr-3" title="Tooltip on top"></i>
-                <i class="far fa-envelope mr-3"></i>
-                <i class="fas fa-phone-alt mr-3"></i>
-                <i class="far fa-copy mr-3"></i>
-            </div>
-        </div>-->
     </div>
     <div id="lemoin-overlay" style="display:none;">
         <div class="lemoin-spinner"></div>

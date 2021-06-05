@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     $("#btnSharedWithYou").click(function () {
-        location.href = "/ViewExistingData.html?isshared=1";
+        location.href = "/Sharedwithyou.html";
     });
 
     $("#lblMessage").hide();

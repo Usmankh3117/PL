@@ -219,6 +219,40 @@ namespace LemonAPI_Core.Controllers
         }
 
         [HttpPost]
+        [Route("DeleteSharedLeadByUser")]
+        public IActionResult DeleteSharedLeadByUser([FromBody] UserLeadAllModel model)
+        {
+            if (!string.IsNullOrWhiteSpace(Convert.ToString(model.UserId)))
+            {
+                var alllead = dBContext.Contact.Where(a => a.UserId == model.UserId && a.IsDelete == false && a.IsShared == true).ToList();
+                if (alllead != null)
+                {
+                    alllead.ForEach(a => a.IsDelete = true);
+                    dBContext.SaveChanges();
+
+                    foreach (var lead in alllead)
+                    {
+                        var contactSkill = dBContext.ContactSkill.Where(a => a.ContactId == lead.Id).ToList();
+                        if (contactSkill.Any())
+                        {
+                            foreach (var item in contactSkill)
+                            {
+                                item.IsDelete = true;
+                                dBContext.SaveChanges();
+                            }
+                        }
+                    }
+                    return Ok(new { Status = true, Message = "Success" });
+                }
+                else
+                {
+                    return Ok(new { Status = false, Message = "Not Found" });
+                }
+            }
+            return Ok(new { Status = false, Message = "Error" });
+        }
+
+        [HttpPost]
         [Route("CheckUserExists")]
         public IActionResult CheckUserExists([FromBody] UserExistingModel model)
         {

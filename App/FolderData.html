@@ -11,6 +11,7 @@
 
     <script src="/libs/jquery-3.6.0.min.js"></script>
     <script src="/libs/bootstrap.min.js"></script>
+    <script src="js/Master.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/FolderData.js"></script>
 </head>
@@ -34,23 +35,62 @@
         <hr class="solid mt-2 mb-3">
         <div id="divUserData">
             <div class="row">
-                <div class="col-12 text-left mb-1">
-                    <i class="fas fa-arrow-left user-icons" id="btnBackToList"></i>
+                <div class="col-1 text-left mb-1">
+                    <i class="fas fa-chevron-left user-icons" id="btnBackToList"></i>
+                </div>
+                <div class="col-3 text-left mb-1">
+                    <h4 class="page-head">Folders</h4>
+                </div>
+                <div class="col-8 mb-1" id="divShareDetails">
+                    <div class="row">
+                        <div class="col-8 pr-0">
+                            <input type="text" id="txtShareEmail" class="form-control custom-input" placeholder="Email Address">
+                            <label class="text mb-0" id="lblShareEmail"></label>
+                        </div>
+                        <div class="col-4">
+                            <button type="submit" id="btnShareFolder" class="btn btn-primary custom-button">Share Folders</button>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-12 mb-2">
+                <div class="col-1">
+                </div>
+                <div class="col-11 mb-2">
                     <h5>Designation's Folder</h5>
                 </div>
             </div>
-            <div class="row" id="divDesignationData">
+            <div class="row desi-skill-data" id="divDesignationData">
+            </div>
+            <div class="row desi-skill-data button-group-pills text-center" id="divDesignationDataSelect" data-toggle="buttons">
             </div>
             <div class="row mt-4">
-                <div class="col-12 mb-2">
+                <div class="col-1">
+                </div>
+                <div class="col-11 mb-2">
                     <h5>Skill's Folder</h5>
                 </div>
             </div>
-            <div class="row" id="divSkillData">
+            <div class="row desi-skill-data" id="divSkillData">
+            </div>
+            <div class="row desi-skill-data button-group-pills text-center" id="divSkillDataSelect" data-toggle="buttons">
+            </div>
+        </div>
+        <div class="row mt-5 pb-3">
+            <div class="col-12" id="divDeleteMessage" style="margin-left: 60px;">
+                <label id="lblMessageDetele"></label>
+            </div>
+            <div class="col-1">
+            </div>
+            <div class="col-3">
+                <button id="btnRemoveAll" class="btn-custom-main btn-removeAll delete-download-btn">Delete All</button>
+                <button id="btnRemoveSelected" class="btn-custom-main btn-removeAll delete-download-btn">Delete</button>
+            </div>
+            <div class="col-3">
+                <button id="btnSelectFolder" class="btn-custom-main btn-removeAll delete-download-btn">Select</button>
+            </div>
+            <div class="col-3">
+                <button id="btnSelectFolderCancel" class="btn-custom-main btn-removeAll delete-download-btn">Cancel</button>
             </div>
         </div>
     </div>

@@ -1,5 +1,4 @@
-﻿//const app_api_endpoint = "https://localhost:44392/api/";
-const app_api_endpoint = "https://lemoin.massmailcampaign.com/api/";
+﻿const app_api_endpoint = GetAPIEndpoint();
 
 document.addEventListener("DOMContentLoaded", function () {
 
