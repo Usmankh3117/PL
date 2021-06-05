@@ -205,3 +205,18 @@ function logInWithTwitter() {
         Twitter.authenticate();
     });
 }
+
+
+function buttonLoading(button, state) {
+    const text = button.find(".button-text");
+    const loader = button.find(".button-loader");
+    if (state) {
+      button.attr("disabled", true);
+      if (!text.hasClass("d-none")) text.addClass("d-none");
+      if (loader.hasClass("d-none")) loader.removeClass("d-none");
+    } else {
+      button.attr("disabled", false);
+      if (text.hasClass("d-none")) text.removeClass("d-none");
+      if (!loader.hasClass("d-none")) loader.addClass("d-none");
+    }
+  }
