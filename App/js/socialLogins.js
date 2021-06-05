@@ -1,7 +1,10 @@
+const redirectURIHandler = `https://jbhbooijpipeiidilhjhcciimpjeimon.chromiumapp.org/extenson-name`;
+
 function logInWithFB() {
-    var clientId = '';
-    var clientSecret = '';
-    var redirectUri = chrome.identity.getRedirectURL("extenson-name");
+    var clientId = '396986901552505';
+    var clientSecret = '04ef65d51bcd9e455e4607f08ad7a89a';
+    // var redirectUri = chrome.identity.getRedirectURL("extenson-name");
+    var redirectUri = redirectURIHandler;
 
     var url = 'https://www.facebook.com/dialog/oauth?client_id=' + clientId +
         '&reponse_type=token&access_type=online&display=popup' +
@@ -59,9 +62,10 @@ function logInWithFB() {
 
 function logInWithGoogle() {
     return new Promise((resolve, reject) => {
-        const CLIENT_ID = encodeURIComponent('');
+        const CLIENT_ID = encodeURIComponent('110556227270-vcu0r1fn2h8h9g5dupb2eut0qpmn5kvn.apps.googleusercontent.com');
         const RESPONSE_TYPE = encodeURIComponent('id_token');
-        const REDIRECT_URI = encodeURIComponent(chrome.identity.getRedirectURL("extenson-name"))
+        // const REDIRECT_URI = encodeURIComponent(chrome.identity.getRedirectURL("extenson-name"))
+        const REDIRECT_URI = encodeURIComponent(redirectURIHandler);
         const SCOPE = encodeURIComponent('openid email');
         const STATE = encodeURIComponent('meet' + Math.random().toString(36).substring(2, 15));
         const PROMPT = encodeURIComponent('consent');
