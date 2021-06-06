@@ -7,9 +7,6 @@ document.addEventListener("DOMContentLoaded", function () {
     $("#lblFullNameError,#lblEmailError,#lblPasswordError").hide();
     $("#divErrorMessage").hide();
     $("#btnSubmitRegister").click(fn_UserRegister);
-    $("#register-with-facebook").click(facebookRegister);
-    $("#register-with-google").click(goolgeRegister);
-    $("#register-with-twitter").click(twitterRegister);
     $("#txtFullName").change(fn_FullNameChange);
     $("#txtEmail").change(fn_EmailChange);
     $("#txtPassword").change(fn_PasswordChange);
@@ -20,54 +17,6 @@ document.addEventListener("DOMContentLoaded", function () {
 function fn_BacktoLogin() {
     location.href = "/Login.html";
 }
-
-function facebookRegister() {
-    const button = $(this);
-    buttonLoading(button, true);
-    logInWithFB().then(data => {
-        $("#txtFullName").attr("value", data.name);
-        $("#txtPassword").attr("value", data.password);
-        $("#txtEmail").attr("value", data.email);
-        fn_UserRegister();
-        buttonLoading(button, false);
-    }).catch(err => {
-        alert(err);
-        buttonLoading(button, false);
-    });
-}
-
-function goolgeRegister() {
-    const button = $(this);
-    buttonLoading(button, true);
-    logInWithGoogle().then(data => {
-        $("#txtFullName").attr("value", data.name.split("@")[0]);
-        $("#txtPassword").attr("value", data.email);
-        $("#txtEmail").attr("value", data.email);
-        fn_UserRegister();
-        buttonLoading(button, false);
-    }).catch(err => {
-        alert(err);
-        buttonLoading(button, false);
-    });
-}
-
-
-function twitterRegister() {
-    const button = $(this);
-    buttonLoading(button, true);
-    logInWithTwitter().then(data => {
-        console.log({data});
-        // $("#txtFullName").attr("value", data.name.split("@")[0]);
-        // $("#txtPassword").attr("value", data.email);
-        // $("#txtEmail").attr("value", data.email);
-        // fn_UserRegister();
-        buttonLoading(button, false);
-    }).catch(err => {
-        alert(err);
-        buttonLoading(button, false);
-    });
-}
-
 
 
 function fn_UserRegister() {

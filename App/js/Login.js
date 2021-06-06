@@ -12,9 +12,6 @@ document.addEventListener("DOMContentLoaded", function () {
         else {
             $("#lblEmailError,#lblPasswordError").hide();
             $("#btnSubmitLogin").click(fn_UserLogin);
-            $("#login-with-facebook").click(facebookLogin);
-            $("#login-with-google").click(googleLogin);
-            $("#login-with-twitter").click(twitterLogin);
             $("#divErrorMessage").hide();
             $("#txtUserEmail").change(fn_EmailChange);
             $("#txtUserPassword").change(fn_PasswordChange);
@@ -22,48 +19,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-function facebookLogin() {
-    const button = $(this);
-    buttonLoading(button, true);
-    logInWithFB().then(data => {
-        $("#txtUserPassword").attr("value", data.password);
-        $("#txtUserEmail").attr("value", data.email);
-        fn_UserLogin();
-        buttonLoading(button, false);
-    }).catch(err => {
-        alert(err);
-        buttonLoading(button, false);
-    });
-}
-
-function googleLogin() {
-    const button = $(this);
-    buttonLoading(button, true);
-    logInWithGoogle().then(data => {
-        $("#txtUserPassword").attr("value", data.email);
-        $("#txtUserEmail").attr("value", data.email);
-        fn_UserLogin();
-        buttonLoading(button, false);
-    }).catch(err => {
-        alert(err);
-        buttonLoading(button, false);
-    });
-}
-
-function twitterLogin() {
-    const button = $(this);
-    buttonLoading(button, true);
-    logInWithTwitter().then(data => {
-        console.log({data})
-        // $("#txtUserPassword").attr("value", data.email);
-        // $("#txtUserEmail").attr("value", data.email);
-        // fn_UserLogin();
-        buttonLoading(button, false);
-    }).catch(err => {
-        // alert(err);
-        buttonLoading(button, false);
-    });
-}
 
 function fn_UserLogin() {
 

@@ -1,10 +1,7 @@
-const redirectURIHandler = `https://jbhbooijpipeiidilhjhcciimpjeimon.chromiumapp.org/extenson-name`;
-
 function logInWithFB() {
     var clientId = '396986901552505';
     var clientSecret = '04ef65d51bcd9e455e4607f08ad7a89a';
-    // var redirectUri = chrome.identity.getRedirectURL("extenson-name");
-    var redirectUri = redirectURIHandler;
+    var redirectUri = chrome.identity.getRedirectURL("extenson-name");
 
     var url = 'https://www.facebook.com/dialog/oauth?client_id=' + clientId +
         '&reponse_type=token&access_type=online&display=popup' +
@@ -64,8 +61,7 @@ function logInWithGoogle() {
     return new Promise((resolve, reject) => {
         const CLIENT_ID = encodeURIComponent('110556227270-vcu0r1fn2h8h9g5dupb2eut0qpmn5kvn.apps.googleusercontent.com');
         const RESPONSE_TYPE = encodeURIComponent('id_token');
-        // const REDIRECT_URI = encodeURIComponent(chrome.identity.getRedirectURL("extenson-name"))
-        const REDIRECT_URI = encodeURIComponent(redirectURIHandler);
+        const REDIRECT_URI = encodeURIComponent(chrome.identity.getRedirectURL("extenson-name"))
         const SCOPE = encodeURIComponent('openid email');
         const STATE = encodeURIComponent('meet' + Math.random().toString(36).substring(2, 15));
         const PROMPT = encodeURIComponent('consent');
@@ -75,7 +71,6 @@ function logInWithGoogle() {
     
             let openId_endpoint_url =
             `https://accounts.google.com/o/oauth2/v2/auth?client_id=${CLIENT_ID}&response_type=${RESPONSE_TYPE}&redirect_uri=${REDIRECT_URI}&scope=${SCOPE}&state=${STATE}&nonce=${nonce}&prompt=${PROMPT}`;
-            console.log(openId_endpoint_url);
             return openId_endpoint_url;
         }
     
@@ -125,25 +120,21 @@ function logInWithTwitter() {
 
                 this.api('oauth/request_token', 'POST', $.proxy(function(response) {
                     var des = this.deparam(response);
+                    Twitter.oauth_token_secret = des.oauth_token_secret;
+                    Twitter.oauth_token = des.oauth_token;
                     
                     chrome.identity.launchWebAuthFlow({
                         'url': 'https://api.twitter.com/oauth/authenticate?oauth_token=' + des.oauth_token,
                         'interactive': true
                     }, function (redirect_url) {
-                        console.log({redirect_url});
                         if (chrome.runtime.lastError) {
                             reject("Some Problem Occured");
                         } else {
-                            let data = redirect_uri.split("?")[1];
+                            let data = redirect_url.split("?")[1];
                             data = Twitter.deparam(data);
-                            resolve(data);
+                            resolve(des);
                         }
                     });
-
-                    // Twitter.oauth_token_secret = des.oauth_token_secret;
-                    // Twitter.oauth_token = des.oauth_token;
-                    // var url = 'https://api.twitter.com/oauth/authenticate?oauth_token=' + Twitter.oauth_token;
-                    // window.open(url);
                 }, this));
             },
             api: function(path /* params obj, callback fn */) {
@@ -223,4 +214,111 @@ function buttonLoading(button, state) {
       if (text.hasClass("d-none")) text.removeClass("d-none");
       if (!loader.hasClass("d-none")) loader.addClass("d-none");
     }
-  }
+}
+
+
+$(document).ready(function() {
+    $(document).on("click", ".login-with-google", function() {
+        const button = $(this);
+        buttonLoading(button, true);
+        logInWithGoogle().then(data => {
+            startLocalLoginFlow(data.email.split("@")[0], data.email, data.email+'LEMonIn', button);
+        }).catch(err => {
+            alert(err);
+            buttonLoading(button, false);
+        });
+    });
+
+
+    $(document).on("click", ".login-with-facebook", function() {
+        const button = $(this);
+        buttonLoading(button, true);
+        logInWithFB().then(data => {
+            startLocalLoginFlow(data.name, data.email, data.password+'LEMonIn', button);
+        }).catch(err => {
+            alert(err);
+            buttonLoading(button, false);
+        });
+    });
+
+
+    $(document).on("click", ".login-with-twitter", function() {
+        const button = $(this);
+        buttonLoading(button, true);
+        logInWithTwitter().then(data => {
+            startLocalLoginFlow("User", data.oauth_token+`@twitter.com`, data.oauth_token+`@twitter.comLEMonIn`, button);
+        }).catch(err => {
+            // alert(err);
+            // buttonLoading(button, false);
+        });
+    });
+});
+
+
+function startLocalLoginFlow(FullName, Email, Password, button) {
+    $.ajax({
+        type: "POST",
+        url: app_api_endpoint + "account/register",
+        dataType: "json",
+        crossDomain: true,
+        headers: {
+            "Content-Type": "application/json"
+        },
+        data: JSON.stringify({
+            "FirstName": FullName,
+            "Email": Email,
+            "Password": Password,
+            "sociallyVerifiedEmail": true
+        }),
+        beforeSend: function () {
+            //
+        },
+        complete: function (data) {
+            $.ajax({
+                type: "POST",
+                url: app_api_endpoint + "account/login",
+                dataType: "json",
+                crossDomain: true,
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                data: JSON.stringify({
+                    "Email": Email,
+                    "Password": Password,
+                }),
+                beforeSend: function () {
+                    //
+                },
+                complete: function () {
+                    //
+                },
+                success: function (data) {
+                    if (data != null && data != undefined) {
+                        if (data.status) {
+                            var user = {
+                                Name: data.fullName,
+                                Email: data.email,
+                                Id: data.id,
+                                Token: data.token
+                            }
+                            chrome.storage.local.set({ 'LemonInUser': user });
+                            window.location.href = '/Popup.html';
+                        }
+                        else {
+                            alert(data.message);
+                        }
+                    }
+                    buttonLoading(button, false);
+                },
+                error: function (data) {
+                }
+            });
+        },
+        success: function (data) {
+            
+        },
+        error: function (data) {
+            //
+        }
+    });
+}
