@@ -186,6 +186,7 @@ function ScrapeData(callback) {
         var FirstName = "", LastName = "", ProfileURL = "", UserEmail = "", UserPhone = "", Address = "", Company = "", Designation = "", ImageURL = "", TotalExperince = "";
         var SocialLinks = [];
         var UserSkills = [];
+        var CompanyExperince = [];
 
         var LinkedinScrapedData = [];
         var CapturedData = {
@@ -201,7 +202,8 @@ function ScrapeData(callback) {
             "Address": "",
             "TotalExperince": "",
             "SocialLinks": [],
-            "UserSkills": []
+            "UserSkills": [],
+            "Experince" : []
         }
 
         ProfileURL = location.href;
@@ -350,10 +352,27 @@ function ScrapeData(callback) {
                         fnSeemoreCompanylist(function () {
                             console.log("Experience");
                             var totalMonth = 0, TotalYear = 0;
+
+                            var ScrapLast = 3;
                             var compaines = experienceSection.find("li.pv-profile-section__list-item");
                             $(compaines).each(function () {
 
+                                if (ScrapLast == 0)
+                                    return false;
+
+                                var experince = {
+                                    "Company": "",
+                                    "Experience": ""
+                                }
+
                                 if ($(this).find('ul').length > 0) {
+
+                                    var companyNameHTML = $(this).find('a h3');
+                                    if (companyNameHTML.length > 0) {
+                                        if ($(companyNameHTML).find('span:not([class="visually-hidden"])').length > 0) {
+                                            experince.Company = $(companyNameHTML).find('span:not([class="visually-hidden"])').text().trim();
+                                        }
+                                    }
 
                                     var durationHTMl = $(this).find('h4.t-14.t-black.t-normal');
                                     if (durationHTMl.length > 0) {
@@ -361,6 +380,7 @@ function ScrapeData(callback) {
                                         var durataiontextHTML = $(durationHTMl).find('span');
                                         if (durataiontextHTML.length > 0) {
                                             var duration = $(durataiontextHTML[1]).text().trim();
+                                            experince.Experience = duration;
 
                                             if ((duration.indexOf("mos") > 0 && duration.indexOf("yrs") > 0) || (duration.indexOf("mo") > 0 && duration.indexOf("yr") > 0) || (duration.indexOf("mos") > 0 && duration.indexOf("yr") > 0)
                                                 || (duration.indexOf("mo") > 0 && duration.indexOf("yrs") > 0)) {
@@ -403,6 +423,11 @@ function ScrapeData(callback) {
                                 else {
                                     if ($(this).length > 0) {
 
+                                        var companyNameHTML = $(this).find('p.pv-entity__secondary-title');
+                                        if (companyNameHTML.length > 0) {
+                                            experince.Company = $(companyNameHTML).text().trim();
+                                        }
+
                                         var durationHTMl = $(this).find('h4.t-14.t-black--light');
                                         if (durationHTMl.length > 0) {
 
@@ -410,6 +435,7 @@ function ScrapeData(callback) {
                                             if (durataiontextHTML.length > 0) {
 
                                                 var duration = durataiontextHTML.text().trim();
+                                                experince.Experience = duration;
 
                                                 if ((duration.indexOf("mos") > 0 && duration.indexOf("yrs") > 0) || (duration.indexOf("mo") > 0 && duration.indexOf("yr") > 0) || (duration.indexOf("mos") > 0 && duration.indexOf("yr") > 0)
                                                     || (duration.indexOf("mo") > 0 && duration.indexOf("yrs") > 0)) {
@@ -448,8 +474,11 @@ function ScrapeData(callback) {
                                         }
                                     }
                                 }
+                                CompanyExperince.push(experince);
+                                ScrapLast--;
                             });
 
+                            console.log(CompanyExperince);
                             if (totalMonth > 0 && TotalYear > 0) {
 
                                 if (totalMonth < 12) {
@@ -598,6 +627,7 @@ function ScrapeData(callback) {
                     CapturedData.TotalExperince = TotalExperince;
                     CapturedData.SocialLinks = SocialLinks;
                     CapturedData.UserSkills = UserSkills;
+                    CapturedData.Experince = CompanyExperince;
 
                     LinkedinScrapedData.push(CapturedData);
                     console.log(CapturedData);

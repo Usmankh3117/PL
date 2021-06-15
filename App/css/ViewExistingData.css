@@ -65,18 +65,19 @@
         border-radius: 5px 5px;
         -moz-border-radius: 5px;
         -webkit-border-radius: 5px;
-        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
-        -webkit-box-shadow: 5px 5px rgba(0, 0, 0, 0.1);
-        -moz-box-shadow: 5px 5px rgba(0, 0, 0, 0.1);
         font-family: Calibri, Tahoma, Geneva, sans-serif;
         position: absolute;
         left: -6em;
         top: -40px;
         z-index: 99;
         margin-left: 0;
-        max-width: 200px;
+        /*max-width: 200px;*/
         min-width: 200px;
     }
+
+.customtooltipEmail:hover span {
+    left: -9em !important;
+}
 
 .classic, .classicphone {
     background: #000;
@@ -113,13 +114,27 @@
     border-radius: 50px;
 }
 
-.delete-download-btn{
-    height:43px !important;
+.delete-download-btn {
+    height: 35px !important;
 }
 
 .download-up {
+    height: 30px !important;
+    line-height: normal;
+    width: 140px;
+    padding: 5px 0px;
+}
+
+.download-down {
     height: 35px !important;
     line-height: normal;
-    width: 170px;
+    width: 140px;
     padding: 7px 0px;
+}
+
+.icon-box-border {
+    padding: 8px;
+    border: 1px solid #ECEEF5;
+    box-sizing: border-box;
+    border-radius: 10px;
 }

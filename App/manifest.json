@@ -1,6 +1,6 @@
 {
   "name": "LemonIn",
-  "version": "3.1",
+  "version": "3.8",
   "description": "Scrape user data from Linkedin",
 
   "icons": {
@@ -12,7 +12,7 @@
   },
   "content_scripts": [
     {
-      "js": [ "/libs/jquery-3.6.0.min.js", "/js/Main.js" ],
+      "js": [ "/libs/jquery-3.6.0.min.js", "/js/Master.js", "/js/Main.js" ],
       "matches": [ "https://www.linkedin.com/*" ],
       "css": [ "/css/style.css" ],
       "run_at": "document_end"

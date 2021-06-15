@@ -5,19 +5,21 @@
 .folder {
     display: table-cell;
     text-align: center;
-    padding: 10px;
+    padding: 10px 20px;
     background-color: #000;
     color: #fff;
     border-radius: 20px;
     min-width: 60px;
     margin-right: 10px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
     .folder a {
         font-size: 16px;
         text-decoration: none;
         color: #fff;
+        font-weight: 300;
+        text-transform: capitalize;
     }
 
     .folder label:hover {
@@ -82,5 +84,5 @@
 }
 
 .delete-download-btn {
-    height: 43px !important;
+    height: 35px !important;
 }

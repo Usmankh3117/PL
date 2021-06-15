@@ -483,6 +483,17 @@ function ShowDataBasedonPage(pageNumber, allUserData) {
     var end = start + PageSize;
 
     var alluserHTML = "";
+
+    var folderType = getUrlVars()["folderType"];
+    var folderValue = getUrlVars()["folderValue"];
+    var skillName = getUrlVars()["skillName"];
+
+    if (folderType == undefined || folderType == null) {
+        folderType = "";
+        folderValue = "";
+        skillName = "";
+    }
+
     for (var i = start; i < end; i++) {
 
         if (allUserData[i] != undefined) {
@@ -502,25 +513,25 @@ function ShowDataBasedonPage(pageNumber, allUserData) {
 
             var emailHTML = "", phoneHTML = "";
             if (userEmail != "" && userEmail != null && userEmail.trim() != "") {
-                emailHTML = '<a style="color: #000;" href="mailto:' + userEmail + '"><i class="far fa-envelope mr-3 customtooltip">' + (userEmail != "" && userEmail.trim() != "" ? '<span class="classic">' + userEmail + '</span>' : "") + '</i></a>';
+                emailHTML = '<a style="color: #000;" href="mailto:' + userEmail + '"><i class="far fa-envelope mr-2 customtooltip customtooltipEmail icon-box-border">' + (userEmail != "" && userEmail.trim() != "" ? '<span class="classic">' + userEmail + '</span>' : "") + '</i></a>';
             }
             else {
-                emailHTML = '<i class="far fa-envelope mr-3 customtooltip">' + (userEmail != "" && userEmail != null && userEmail.trim() != "" ? '<span class="classic">' + userEmail + '</span>' : "") + '</i>';
+                emailHTML = '<i class="far fa-envelope mr-2 customtooltip customtooltipEmail icon-box-border">' + (userEmail != "" && userEmail != null && userEmail.trim() != "" ? '<span class="classic">' + userEmail + '</span>' : "") + '</i>';
             }
             if (userPhone != "" && userPhone != null && userPhone.trim() != "") {
-                phoneHTML = '<a style="color: #000;" href="callto:' + userPhone + '"><i class="fas fa-phone-alt mr-3 customtooltip">' + (userPhone != "" && userPhone.trim() != "" ? '<span class="classicphone">' + userPhone + '</span>' : "") + '</i></a>';
+                phoneHTML = '<a style="color: #000;" href="callto:' + userPhone + '"><i class="fas fa-phone-alt mr-2 customtooltip icon-box-border">' + (userPhone != "" && userPhone.trim() != "" ? '<span class="classicphone">' + userPhone + '</span>' : "") + '</i></a>';
             }
             else {
-                phoneHTML = '<i class="fas fa-phone-alt mr-3 customtooltip">' + (userPhone != "" && userPhone != null && userPhone.trim() != "" ? '<span class="classic">' + userPhone + '</span>' : "") + '</i>';
+                phoneHTML = ''; //'<i class="fas fa-phone-alt mr-2 customtooltip">' + (userPhone != "" && userPhone != null && userPhone.trim() != "" ? '<span class="classic">' + userPhone + '</span>' : "") + '</i>';
             }
 
             alluserHTML += '<div class="row mb-3 user-data-list">' +
                 '<div class="col-1"></div><div class="col-1 pl-0"><img class="user-profile-img" src="' + userProfileURL + '" /><input type="hidden" value="' + contactId + '" /></div>' +
-                '<div class="col-6"><p class="mb-0 user-name"><a href="UserDetails.html?userid=' + contactId + '">' + userName + '</a></p><label class="user-company-info">' + userDesignation + ' | ' + userCompany + '</label></div>' +
-                '<div class="col-4 text-right"><i class="far fa-map mr-3 customtooltip">' + (userAddress != "" && userAddress != null && userAddress.trim() != "" ? '<span class="classic">' + userAddress + '</span>' : "") + '</i>' +
+                '<div class="col-6"><p class="mb-0 user-name"><a href="UserDetails.html?userid=' + contactId + '&folderType=' + folderType + '&folderValue=' + folderValue + '&skillName=' + skillName+'">' + userName + '</a></p><label class="user-company-info">' + userDesignation + ' | ' + userCompany + '</label></div>' +
+                '<div class="col-4 text-right"><i class="far fa-map mr-2 customtooltip icon-box-border">' + (userAddress != "" && userAddress != null && userAddress.trim() != "" ? '<span class="classic">' + userAddress + '</span>' : "") + '</i>' +
                 emailHTML + phoneHTML +
-                '<i class="far fa-copy mr-3 copytoclipboard"></i>' +
-                '<i class="far fa-trash-alt btnDeleteSingleUser" style="color:red" data-id="' + contactId + '"></i>' +
+                '<i class="far fa-copy mr-2 copytoclipboard icon-box-border"></i>' +
+                '<i class="far fa-trash-alt btnDeleteSingleUser icon-box-border" style="color:red" data-id="' + contactId + '"></i>' +
                 '<input type="hidden" id="hdnAddress" value="' + (userAddress == null ? "" : userAddress) + '" /><input type="hidden" id="hdnEmail" value="' + (userEmail == null ? "" : userEmail) + '" /><input type="hidden" id="hdnPhone" value="' + (userPhone == null ? "" : userPhone) + '" /> </div>' +
                 '</div>';
         }
@@ -570,7 +581,7 @@ function GenerateCSVData(allLinkedinData) {
             csvData += singleUser["firstName"] + "," + singleUser["lastName"] + "," + singleUser["phoneNumber"] + "," + singleUser["email"] + "," + singleUser["address"] + "," + socialLinks + "\n";
         }
         $("#btnLinkedinDownloadCSVUp,#btnLinkedinDownloadCSVDown").attr("download", "Linkedin Data.csv");
-        $("#btnLinkedinDownloadCSVUp,#btnLinkedinDownloadCSVDown").attr("href", "data:text/csv,First Name,Last Name,Phone Number,Email,Address,Social Links\n" + csvData);
+        $("#btnLinkedinDownloadCSVUp,#btnLinkedinDownloadCSVDown").attr("href", "data:text/csv,First Name,Last Name,Phone Number,Email,Address,Social Links,Skype\n" + csvData);
     }
 }
 

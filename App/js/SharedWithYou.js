@@ -123,32 +123,32 @@ function LoadAllSharedFolders() {
 
                                         var emailHTML = "", phoneHTML = "";
                                         if (userEmail != "" && userEmail != null && userEmail.trim() != "") {
-                                            emailHTML = '<a style="color: #000;" href="mailto:' + userEmail + '"><i class="far fa-envelope mr-3 customtooltip">' + (userEmail != "" && userEmail.trim() != "" ? '<span class="classic">' + userEmail + '</span>' : "") + '</i></a>';
+                                            emailHTML = '<a style="color: #000;" href="mailto:' + userEmail + '"><i class="far fa-envelope mr-3 customtooltip icon-box-border">' + (userEmail != "" && userEmail.trim() != "" ? '<span class="classic">' + userEmail + '</span>' : "") + '</i></a>';
                                         }
                                         else {
-                                            emailHTML = '<i class="far fa-envelope mr-3 customtooltip">' + (userEmail != "" && userEmail != null && userEmail.trim() != "" ? '<span class="classic">' + userEmail + '</span>' : "") + '</i>';
+                                            emailHTML = '<i class="far fa-envelope mr-3 customtooltip icon-box-border">' + (userEmail != "" && userEmail != null && userEmail.trim() != "" ? '<span class="classic">' + userEmail + '</span>' : "") + '</i>';
                                         }
                                         if (userPhone != "" && userPhone != null && userPhone.trim() != "") {
-                                            phoneHTML = '<a style="color: #000;" href="callto:' + userPhone + '"><i class="fas fa-phone-alt mr-3 customtooltip">' + (userPhone != "" && userPhone.trim() != "" ? '<span class="classicphone">' + userPhone + '</span>' : "") + '</i></a>';
+                                            phoneHTML = '<a style="color: #000;" href="callto:' + userPhone + '"><i class="fas fa-phone-alt mr-3 customtooltip icon-box-border">' + (userPhone != "" && userPhone.trim() != "" ? '<span class="classicphone">' + userPhone + '</span>' : "") + '</i></a>';
                                         }
                                         else {
-                                            phoneHTML = '<i class="fas fa-phone-alt mr-3 customtooltip">' + (userPhone != "" && userPhone != null && userPhone.trim() != "" ? '<span class="classic">' + userPhone + '</span>' : "") + '</i>';
+                                            phoneHTML = ''; //'<i class="fas fa-phone-alt mr-3 customtooltip">' + (userPhone != "" && userPhone != null && userPhone.trim() != "" ? '<span class="classic">' + userPhone + '</span>' : "") + '</i>';
                                         }
 
-                                        alluserHTML += '<div class="row mt-2 user-data-list">' +
+                                        alluserHTML += '<div class="row mt-3 mb-3 user-data-list">' +
                                             '<div class="col-1 pl-3"><img class="user-profile-img" src="' + userProfileURL + '" /><input type="hidden" value="' + contactId + '" /></div>' +
                                             '<div class="col-7"><p class="mb-0 user-name"><a href="UserDetails.html?back=shared&userid=' + contactId + '">' + userName + '</a></p><label class="user-company-info">' + userDesignation + ' | ' + userCompany + '</label></div>' +
-                                            '<div class="col-4 text-right"><i class="far fa-map mr-3 customtooltip">' + (userAddress != "" && userAddress != null && userAddress.trim() != "" ? '<span class="classic">' + userAddress + '</span>' : "") + '</i>' +
+                                            '<div class="col-4 text-right"><i class="far fa-map mr-3 customtooltip icon-box-border">' + (userAddress != "" && userAddress != null && userAddress.trim() != "" ? '<span class="classic">' + userAddress + '</span>' : "") + '</i>' +
                                             emailHTML + phoneHTML +
-                                            '<i class="far fa-copy mr-3 copytoclipboard"></i>' +
-                                            '<i class="far fa-trash-alt btnDeleteSingleUser" style="color:red" data-id="' + contactId + '"></i>' +
+                                            '<i class="far fa-copy mr-3 copytoclipboard icon-box-border"></i>' +
+                                            '<i class="far fa-trash-alt btnDeleteSingleUser icon-box-border" style="color:red" data-id="' + contactId + '"></i>' +
                                             '<input type="hidden" id="hdnAddress" value="' + (userAddress == null ? "" : userAddress) + '" /><input type="hidden" id="hdnEmail" value="' + (userEmail == null ? "" : userEmail) + '" /><input type="hidden" id="hdnPhone" value="' + (userPhone == null ? "" : userPhone) + '" /> </div>' +
                                             '</div>';
                                     }
                                 }
 
-                                var buttonHTMl = '<div class="col-12 mb-2 ml-4">' +
-                                    '<button class="btn btn-primary custom-button" data-toggle="collapse" data-target="#collapse' + designationClear + '" aria-expanded="true" aria-controls="collapse' + designationClear + '">' + desingation[i].designation + '<i class="fa ml-3" aria-hidden="true"></i></button>' +
+                                var buttonHTMl = '<div class="col-12 ml-4">' +
+                                    '<button class="btn btn-primary custom-button mb-2" data-toggle="collapse" data-target="#collapse' + designationClear + '" aria-expanded="true" aria-controls="collapse' + designationClear + '">' + desingation[i].designation + '<i class="fa ml-3" aria-hidden="true"></i></button>' +
                                     '<div id="collapse' + designationClear + '" class="collapse" aria-labelledby="headingOne" data-parent="#accordinDesingation">' + alluserHTML + '</div>' +
                                     '</div>';
 
@@ -186,32 +186,32 @@ function LoadAllSharedFolders() {
 
                                         var emailHTML = "", phoneHTML = "";
                                         if (userEmail != "" && userEmail != null && userEmail.trim() != "") {
-                                            emailHTML = '<a style="color: #000;" href="mailto:' + userEmail + '"><i class="far fa-envelope mr-3 customtooltip">' + (userEmail != "" && userEmail.trim() != "" ? '<span class="classic">' + userEmail + '</span>' : "") + '</i></a>';
+                                            emailHTML = '<a style="color: #000;" href="mailto:' + userEmail + '"><i class="far fa-envelope mr-3 customtooltip icon-box-border">' + (userEmail != "" && userEmail.trim() != "" ? '<span class="classic">' + userEmail + '</span>' : "") + '</i></a>';
                                         }
                                         else {
-                                            emailHTML = '<i class="far fa-envelope mr-3 customtooltip">' + (userEmail != "" && userEmail != null && userEmail.trim() != "" ? '<span class="classic">' + userEmail + '</span>' : "") + '</i>';
+                                            emailHTML = '<i class="far fa-envelope mr-3 customtooltip icon-box-border">' + (userEmail != "" && userEmail != null && userEmail.trim() != "" ? '<span class="classic">' + userEmail + '</span>' : "") + '</i>';
                                         }
                                         if (userPhone != "" && userPhone != null && userPhone.trim() != "") {
-                                            phoneHTML = '<a style="color: #000;" href="callto:' + userPhone + '"><i class="fas fa-phone-alt mr-3 customtooltip">' + (userPhone != "" && userPhone.trim() != "" ? '<span class="classicphone">' + userPhone + '</span>' : "") + '</i></a>';
+                                            phoneHTML = '<a style="color: #000;" href="callto:' + userPhone + '"><i class="fas fa-phone-alt mr-3 customtooltip icon-box-border">' + (userPhone != "" && userPhone.trim() != "" ? '<span class="classicphone">' + userPhone + '</span>' : "") + '</i></a>';
                                         }
                                         else {
-                                            phoneHTML = '<i class="fas fa-phone-alt mr-3 customtooltip">' + (userPhone != "" && userPhone != null && userPhone.trim() != "" ? '<span class="classic">' + userPhone + '</span>' : "") + '</i>';
+                                            phoneHTML = ''; //'<i class="fas fa-phone-alt mr-3 customtooltip">' + (userPhone != "" && userPhone != null && userPhone.trim() != "" ? '<span class="classic">' + userPhone + '</span>' : "") + '</i>';
                                         }
 
-                                        alluserHTML += '<div class="row mt-2 user-data-list">' +
+                                        alluserHTML += '<div class="row mt-3 mb-3 user-data-list">' +
                                             '<div class="col-1 pl-3"><img class="user-profile-img" src="' + userProfileURL + '" /><input type="hidden" value="' + contactId + '" /></div>' +
                                             '<div class="col-7"><p class="mb-0 user-name"><a href="UserDetails.html?back=shared&userid=' + contactId + '">' + userName + '</a></p><label class="user-company-info">' + userDesignation + ' | ' + userCompany + '</label></div>' +
-                                            '<div class="col-4 text-right"><i class="far fa-map mr-3 customtooltip">' + (userAddress != "" && userAddress != null && userAddress.trim() != "" ? '<span class="classic">' + userAddress + '</span>' : "") + '</i>' +
+                                            '<div class="col-4 text-right"><i class="far fa-map mr-3 customtooltip icon-box-border">' + (userAddress != "" && userAddress != null && userAddress.trim() != "" ? '<span class="classic">' + userAddress + '</span>' : "") + '</i>' +
                                             emailHTML + phoneHTML +
-                                            '<i class="far fa-copy mr-3 copytoclipboard"></i>' +
-                                            '<i class="far fa-trash-alt btnDeleteSingleUser" style="color:red" data-id="' + contactId + '"></i>' +
+                                            '<i class="far fa-copy mr-3 copytoclipboard icon-box-border"></i>' +
+                                            '<i class="far fa-trash-alt btnDeleteSingleUser icon-box-border" style="color:red" data-id="' + contactId + '"></i>' +
                                             '<input type="hidden" id="hdnAddress" value="' + (userAddress == null ? "" : userAddress) + '" /><input type="hidden" id="hdnEmail" value="' + (userEmail == null ? "" : userEmail) + '" /><input type="hidden" id="hdnPhone" value="' + (userPhone == null ? "" : userPhone) + '" /> </div>' +
                                             '</div>';
                                     }
                                 }
 
-                                var buttonHTMl = '<div class="col-12 mb-2 ml-4">' +
-                                    '<button class="btn btn-primary custom-button" data-toggle="collapse" data-target="#collapse' + skillsClear + '" aria-expanded="true" aria-controls="collapse' + skillsClear + '">' + skills[i].skill + '<i class="fa ml-3" aria-hidden="true"></i></button>' +
+                                var buttonHTMl = '<div class="col-12 ml-4">' +
+                                    '<button class="btn btn-primary custom-button mb-2" data-toggle="collapse" data-target="#collapse' + skillsClear + '" aria-expanded="true" aria-controls="collapse' + skillsClear + '">' + skills[i].skill + '<i class="fa ml-3" aria-hidden="true"></i></button>' +
                                     '<div id="collapse' + skillsClear + '" class="collapse" aria-labelledby="headingOne" data-parent="#accordinSkill">' + alluserHTML + '</div>' +
                                     '</div>';
 
@@ -224,7 +224,7 @@ function LoadAllSharedFolders() {
                             $("#divUserData").html('<p class="text-danger ml-5">No Data Found.</p>');
                             $("#btnRemoveAll").hide();
                         }
-                            
+
                     }
                     else {
                         $("#divUserData").html('<p class="text-danger ml-5">No Data Found.</p>');

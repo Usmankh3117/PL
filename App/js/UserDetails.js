@@ -19,7 +19,13 @@ document.addEventListener("DOMContentLoaded", function () {
     $("#btnBackToList").click(function () {
 
         var backType = getUrlVars()["back"];
-        if (backType == undefined || backType == null)
+        var folderType = getUrlVars()["folderType"];
+        var folderValue = getUrlVars()["folderValue"];
+        var skillName = getUrlVars()["skillName"];
+
+        if (folderType != "" && folderType != undefined && folderType != null)
+            location.href = "/ViewExistingData.html?folderType=" + folderType + "&folderValue=" + decodeURI(folderValue) + "&skillName=" + skillName;
+        else if (backType == undefined || backType == null)
             location.href = "/ViewExistingData.html";
         else
             location.href = "/Sharedwithyou.html";
@@ -123,7 +129,7 @@ $(document).ready(function () {
                             $("#lblUserNumber").text("");
 
                         $("#lblUserAddress").text((user.address == null ? "" : user.address));
-                        $("#lblExperience").text((user.totalExperince == null ? "" : user.totalExperince));
+                        //$("#lblExperience").text((user.totalExperince == null ? "" : user.totalExperince));
 
                         if (data.data.skill != null && data.data.skill != undefined && data.data.skill.length > 0) {
 
@@ -133,6 +139,16 @@ $(document).ready(function () {
                                 skillHTML += '<span class="badge badge-pill custom-badge badge-primary p-2 pl-3 pr-3 mb-2 mr-2 badge-font-size">' + userSkill[i] + '</span>'
                             }
                             $("#divSkilss").html(skillHTML);
+                        }
+
+                        if (data.data.experince != null && data.data.experince != undefined && data.data.experince.length > 0) {
+
+                            var userExperince = data.data.experince;
+                            var experinceHTML = "";
+                            for (var i = 0; i < userExperince.length; i++) {
+                                experinceHTML += '<div class="row"><div class="col-7"><p class="mb-0 details-info">' + userExperince[i].companyName + '</p></div><div class="col-5"><p class="mb-0 details-info"> - ' + userExperince[i].experience + '</p></div></div>';
+                            }
+                            $("#divExperince").html(experinceHTML);
                         }
 
                     }
